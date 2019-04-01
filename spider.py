@@ -144,7 +144,7 @@ class Spider:
                 else:
                     r.sadd('yet', listing_id)
             data['pageIndex'] += 1
-            time.sleep(1)
+            time.sleep(3)
 
     def step1(self, listing_id):
         if self.dbWorker.search(Loan.loan_id == listing_id):
@@ -516,20 +516,19 @@ class Spider:
             user_id = self.step1(ld)
             if not user_id:
                 continue
+            time.sleep(1)
             self.step2(user_id, ld)
+            time.sleep(1)
             self.step3(user_id, ld)
+            time.sleep(1)
             self.step4(ld)
+            time.sleep(1)
             self.step5(ld)
             time.sleep(1)
 
 
 if __name__ == '__main__':
     spider = Spider()
-    u = spider.step1(309940861)
-    if not u:
-        exit(0)
-    spider.step2(u, 309940861)
-    spider.step3(u, 309940861)
-    spider.step4(309940861)
-    spider.step5(309940861)
+    while True:
+        spider.step0()
     # spider.run()
