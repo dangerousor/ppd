@@ -25,6 +25,7 @@ class Spider:
 
     def __init__(self):
         self.login()
+        pass
 
     def get_html(self, url, header=None):
         if not header:
@@ -531,4 +532,6 @@ if __name__ == '__main__':
     spider = Spider()
     while True:
         spider.step0()
+        print('sleep for 2h')
+        time.sleep(2*60*60)
     # spider.run()
