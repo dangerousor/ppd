@@ -261,7 +261,7 @@ class Spider:
         graduation = '暂未提供'
         study_style = '暂未提供'
         if result['educationInfo']:
-            degree = result['educationInfo']['degree']
+            degree = result['educationInfo']['educationDegree']
             graduation = result['educationInfo']['graduate']
             study_style = result['educationInfo']['studyStyle']
         if result['overdueStatus'] == 1:
@@ -289,7 +289,7 @@ class Spider:
             industry = '暂未提供'
         auths = ''
         if result['userAuthsList']:
-            auths = '，'.join([each.name for each in result['userAuthsList']])
+            auths = '，'.join([each['name'] for each in result['userAuthsList']])
         self.dbWorker.insert(User(
             user_id=user_id,
             real_name=real_name,
@@ -327,19 +327,22 @@ class Spider:
             return
         if result['loanerStatistics']:
             success_borrow_num = result['loanerStatistics']['listingStatics']['successNum']
-            first_success_borrow_date = time.strptime(result['loanerStatistics']['listingStatics']['firstSuccessDate'], '%Y-%m-%d %H:%M:%S')
-            history = result['loanerStatistics']['listingStatics']['wasteNum'] + "次流标，" + result['loanerStatistics']['listingStatics']['cancelNum'] + "次撤标，" + result['loanerStatistics']['listingStatics']['failNum'] + "次失败"
+            try:
+                first_success_borrow_date = time.strptime(result['loanerStatistics']['listingStatics']['firstSuccessDate'], '%Y-%m-%d %H:%M:%S')
+            except:
+                first_success_borrow_date = None
+            history = str(result['loanerStatistics']['listingStatics']['wasteNum']) + "次流标，" + str(result['loanerStatistics']['listingStatics']['cancelNum']) + "次撤标，" + str(result['loanerStatistics']['listingStatics']['failNum']) + "次失败"
             success_pay_num = result['loanerStatistics']['successNum']
             normal_num = result['loanerStatistics']['normalNum']
             overdue_less_num = result['loanerStatistics']['overdueLessNum']
             overdue_more_num = result['loanerStatistics']['overdueMoreNum']
             owing_amount_map = result['loanerStatistics']['owingAmountMap']
-            overdue_day_map = result['loanStatistics']['overdueDayMap']
-            total_principal = result['loanStatistics']['totalPrincipal']
-            owing_amount = result['loanStatistics']['owingAmount']
-            loan_amount_max = result['loanStatistics']['loanAmountMax']
-            debt_amount_max = result['loanStatistics']['debtAmountMax']
-            debt_amount_map = result['loanStatistics']['debtAmountMap']
+            overdue_day_map = result['loanerStatistics']['overdueDayMap']
+            total_principal = result['loanerStatistics']['totalPrincipal']
+            owing_amount = result['loanerStatistics']['owingAmount']
+            loan_amount_max = result['loanerStatistics']['loanAmountMax']
+            debt_amount_max = result['loanerStatistics']['debtAmountMax']
+            debt_amount_map = result['loanerStatistics']['debtAmountMap']
         else:
             success_borrow_num = None
             first_success_borrow_date = None

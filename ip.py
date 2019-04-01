@@ -12,7 +12,7 @@ class Ip:
 
     @staticmethod
     def get_ips():
-        res = requests.get(url='http://d.jghttp.golangapi.com/getip?num=10&type=2&pro=0&city=0&yys=0&port=11&pack=8063&ts=1&ys=0&cs=0&lb=1&sb=0&pb=45&mr=2&regions=', timeout=30)
+        res = requests.get(url='http://d.jghttp.golangapi.com/getip?num=5&type=2&pro=150000&city=150100&yys=0&port=11&time=1&ts=1&ys=0&cs=0&lb=1&sb=0&pb=45&mr=2&regions=', timeout=30)
         if res.status_code != 200:
             print(res.content.decode())
             exit(res.status_code)
