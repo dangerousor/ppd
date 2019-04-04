@@ -499,7 +499,7 @@ class Spider:
             debt_record.append(DebtRecord(
                 lender_id=each['lenderId'],
                 lender_name=each['lenderName'],
-                owing_principal=each['owing'],
+                owing_principal=each['owingPrincipal'],
                 price_for_sell=each['priceForSell'],
                 buy_source_type=buy_source_type,
                 close_bid_date=time.strptime(each['creationDate'], '%Y-%m-%d %H:%M:%S'),
