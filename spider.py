@@ -517,6 +517,7 @@ class Spider:
                 continue
             ld = int(ld.decode())
             print(ld)
+            r.sadd('done', ld)
             user_id = self.step1(ld)
             if not user_id:
                 continue
