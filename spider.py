@@ -502,7 +502,7 @@ class Spider:
                 owing_principal=each['owingPrincipal'],
                 price_for_sell=each['priceForSell'],
                 buy_source_type=buy_source_type,
-                close_bid_date=time.strptime(each['creationDate'], '%Y-%m-%d %H:%M:%S'),
+                close_bid_date=time.strptime(each['closeBidDate'], '%Y-%m-%d %H:%M:%S'),
                 debt_deal_id=str(each['debtDealId']),
                 buyer_user_name=each['buyerUserName'],
             ))
