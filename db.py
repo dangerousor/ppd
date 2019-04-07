@@ -14,7 +14,7 @@ class DebtRecord(Base):
 
     index = Column(INTEGER(11), primary_key=True, autoincrement=True)
     lender_id = Column(INTEGER(11))
-    lender_name = Column(INTEGER(11))
+    lender_name = Column(Text)
     owing_principal = Column(Float)
     price_for_sell = Column(Float)
     buy_source_type = Column(Text)
