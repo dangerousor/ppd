@@ -150,19 +150,23 @@ class Spider:
     def step1(self, listing_id):
         if self.dbWorker.search(Loan.loan_id == listing_id):
             return False
-        url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showListingBaseInfo'
-        data = {
-            'listingId': str(listing_id),
-            'source': 1,
-        }
-        res = json.loads(self.post_html(url, header=self.header2, data=json.dumps(data)).content.decode())
-        if res['result'] != 1:
-            if res['result'] == 404:
+        while True:
+            url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showListingBaseInfo'
+            data = {
+                'listingId': str(listing_id),
+                'source': 1,
+            }
+            res = json.loads(self.post_html(url, header=self.header2, data=json.dumps(data)).content.decode())
+            if res['result'] != 1:
+                if res['result'] == 404:
+                    print(res)
+                    return False
+                if res['result'] == 5066:
+                    self.login()
+                    continue
                 print(res)
-                return False
-            print(res)
-            exit(-1)
-        return self.step1_save(res['resultContent'])
+                exit(-1)
+            return self.step1_save(res['resultContent'])
 
     def step1_save(self, result):
         loan_id = result['listing']['listingId']
@@ -238,16 +242,21 @@ class Spider:
         return user_id
 
     def step2(self, user_id, listing_id):
-        url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBorrowerInfo'
-        data = {
-            'listingId': str(listing_id),
-            'source': 1,
-        }
-        res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
-        if res['result'] != 1:
-            print(res)
-            exit(-2)
-        self.step2_save(user_id, res['resultContent'])
+        while True:
+            url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBorrowerInfo'
+            data = {
+                'listingId': str(listing_id),
+                'source': 1,
+            }
+            res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
+            if res['result'] != 1:
+                if res['result'] == 5066:
+                    self.login()
+                    continue
+                print(res)
+                exit(-2)
+            self.step2_save(user_id, res['resultContent'])
+            return
 
     def step2_save(self, user_id, result):
         if self.dbWorker.search(User.user_id == user_id):
@@ -311,16 +320,21 @@ class Spider:
         ))
 
     def step3(self, user_id, listing_id):
-        url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBorrowerStatistics'
-        data = {
-            'listingId': str(listing_id),
-            'source': 1,
-        }
-        res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
-        if res['result'] != 1:
-            print(res)
-            exit(-3)
-        self.step3_save(user_id, listing_id, res['resultContent'])
+        while True:
+            url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBorrowerStatistics'
+            data = {
+                'listingId': str(listing_id),
+                'source': 1,
+            }
+            res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
+            if res['result'] != 1:
+                if res['result'] == 5066:
+                    self.login()
+                    continue
+                print(res)
+                exit(-3)
+            self.step3_save(user_id, listing_id, res['resultContent'])
+            return
 
     def step3_save(self, user_id, loan_id, result):
         if self.dbWorker.search(Statistic.loan_id == loan_id):
@@ -423,16 +437,21 @@ class Spider:
             self.dbWorker.insert_all(previous_listing)
 
     def step4(self, listing_id):
-        url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBidRecord'
-        data = {
-            'listingId': str(listing_id),
-            'source': 1,
-        }
-        res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
-        if res['result'] != 1:
-            print(res)
-            exit(-4)
-        self.step4_save(listing_id, res['resultContent'])
+        while True:
+            url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showBidRecord'
+            data = {
+                'listingId': str(listing_id),
+                'source': 1,
+            }
+            res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
+            if res['result'] != 1:
+                if res['result'] == 5066:
+                    self.login()
+                    continue
+                print(res)
+                exit(-4)
+            self.step4_save(listing_id, res['resultContent'])
+            return
 
     def step4_save(self, loan_id, result):
         if not result['bidRecordList']:
@@ -469,16 +488,21 @@ class Spider:
         self.dbWorker.insert_all(records)
 
     def step5(self, listing_id):
-        url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showDebtRecord'
-        data = {
-            'listingId': str(listing_id),
-            'source': 1,
-        }
-        res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
-        if res['result'] != 1:
-            print(res)
-            exit(-5)
-        self.step5_save(res['resultContent'])
+        while True:
+            url = 'https://invest.ppdai.com/api/invapi/LoanDetailPcService/showDebtRecord'
+            data = {
+                'listingId': str(listing_id),
+                'source': 1,
+            }
+            res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
+            if res['result'] != 1:
+                if res['result'] == 5066:
+                    self.login()
+                    continue
+                print(res)
+                exit(-5)
+            self.step5_save(res['resultContent'])
+            return
 
     def step5_save(self, result):
         if not result['debtRecordList']:
