@@ -41,6 +41,11 @@ class Spider:
             header = self.header
         res = self.session.post(url, data=data, headers=header)
         if res.status_code != 200:
+            if res.status_code == 502:
+                print(502)
+                time.sleep(180)
+                return self.post_html(url, data, header)
+            print(res.status_code)
             print(res.content.decode())
             exit(res.status_code)
         return res
@@ -559,7 +564,7 @@ class Spider:
 if __name__ == '__main__':
     spider = Spider()
     while True:
-        spider.step0()
+        spider.step1(10000000)
         print('sleep for 2h')
         time.sleep(2*60*60)
     # spider.run()
