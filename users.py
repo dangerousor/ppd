@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 user = {
-    'username': '13122317558',
-    'password': '13122317558jlw',
+    'username': '18930900663',
+    'password': 'liuxiaofeng1974',
 }
