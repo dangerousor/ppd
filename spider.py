@@ -42,8 +42,8 @@ class Spider:
             header = self.header
         res = self.session.post(url, data=data, headers=header)
         if res.status_code != 200:
-            if res.status_code == 502:
-                print(502)
+            if res.status_code == 502 or res.status_code == 500:
+                print(res.status_code)
                 time.sleep(180)
                 return self.post_html(url, data, header)
             print(res.status_code)
@@ -527,10 +527,10 @@ class Spider:
                     return
                 print(res)
                 exit(-5)
-            self.step5_save(res['resultContent'])
+            self.step5_save(listing_id, res['resultContent'])
             return
 
-    def step5_save(self, result):
+    def step5_save(self, listing_id, result):
         if not result['debtRecordList']:
             return
         debt_record = []
@@ -547,6 +547,7 @@ class Spider:
             except:
                 buy_source_type = '项目'
             debt_record.append(DebtRecord(
+                loan_id=listing_id,
                 lender_id=each['lenderId'],
                 lender_name=each['lenderName'],
                 owing_principal=each['owingPrincipal'],
