@@ -173,11 +173,15 @@ class Spider:
                     print(res)
                     return False
                 if res['result'] == 5066:
+                    time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 5067:
                     print(res)
                     return False
+                if res['result'] == 1012:
+                    time.sleep(300)
+                    continue
                 print(res)
                 exit(-1)
             return self.step1_save(res['resultContent'])
@@ -265,11 +269,15 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 5067:
                     print(res)
                     return
+                if res['result'] == 1012:
+                    time.sleep(300)
+                    continue
                 print(res)
                 exit(-2)
             self.step2_save(user_id, res['resultContent'])
@@ -346,11 +354,15 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 5067:
                     print(res)
                     return
+                if res['result'] == 1012:
+                    time.sleep(300)
+                    continue
                 print(res)
                 exit(-3)
             self.step3_save(user_id, listing_id, res['resultContent'])
@@ -466,11 +478,15 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 5067:
                     print(res)
                     return
+                if res['result'] == 1012:
+                    time.sleep(300)
+                    continue
                 print(res)
                 exit(-4)
             self.step4_save(listing_id, res['resultContent'])
@@ -520,11 +536,15 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 5067:
                     print(res)
                     return
+                if res['result'] == 1012:
+                    time.sleep(300)
+                    continue
                 print(res)
                 exit(-5)
             self.step5_save(listing_id, res['resultContent'])
