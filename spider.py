@@ -87,8 +87,13 @@ class Spider:
                 print('验证码输入有误')
                 self.login()
             else:
-                print(html)
-                exit(-1)
+                if html['Message'] == '您的帐号登录频繁，请稍后再试':
+                    print('您的帐号登录频繁，请稍后再试')
+                    time.sleep(180)
+                    self.login()
+                else:
+                    print(html)
+                    exit(-1)
         # ck_dict = requests.utils.dict_from_cookiejar(self.session.cookies)
         # res = self.confirm_login(ck_dict['token'])
         # print(res.content.decode())
