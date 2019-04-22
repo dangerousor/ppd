@@ -13,7 +13,7 @@ class DebtRecord(Base):
     __tablename__ = 'debt_record'
 
     index = Column(INTEGER(11), primary_key=True, autoincrement=True)
-    loan_id = Column(INTEGER(11), server_default=0)
+    loan_id = Column(INTEGER(11), server_default=text(0))
     lender_id = Column(INTEGER(11))
     lender_name = Column(Text)
     owing_principal = Column(Float)
