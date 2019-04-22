@@ -3,6 +3,7 @@
 import base64
 import json
 import time
+import random
 
 import requests
 
@@ -89,7 +90,7 @@ class Spider:
             else:
                 if html['Message'] == '您的帐号登录频繁，请稍后再试':
                     print('您的帐号登录频繁，请稍后再试')
-                    time.sleep(180)
+                    time.sleep(600)
                     self.login()
                 else:
                     print(html)
@@ -544,12 +545,9 @@ class Spider:
 
     def run(self):
         while True:
-            ld = r.spop('yet')
-            if not ld:
-                print('sleep for 2h')
-                time.sleep(2*60*60)
+            ld = random.randint(10000000, 140000000)
+            if r.sismember('done', str(ld)):
                 continue
-            ld = int(ld.decode())
             print(ld)
             r.sadd('done', ld)
             user_id = self.step1(ld)

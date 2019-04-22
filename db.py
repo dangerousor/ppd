@@ -118,7 +118,7 @@ class User(Base):
 
 
 class DBWorker:
-    engine = create_engine("mysql+pymysql://%s:%s:%s/%s" % ("root", "Lh201903@rm-uf6e1v96s9bc8yvjd0o.mysql.rds.aliyuncs.com", "3306", "test"))
+    engine = create_engine("mysql+pymysql://%s:%s:%s/%s" % ("root", "Lh201903@rm-uf6e1v96s9bc8yvjd0o.mysql.rds.aliyuncs.com", "3306", "old"))
     DBsession = sessionmaker(bind=engine)
 
     def get_session(self):
