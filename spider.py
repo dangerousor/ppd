@@ -175,6 +175,9 @@ class Spider:
                 if res['result'] == 5066:
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    print(res)
+                    return False
                 print(res)
                 exit(-1)
             return self.step1_save(res['resultContent'])
@@ -264,6 +267,9 @@ class Spider:
                 if res['result'] == 5066:
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    print(res)
+                    return
                 print(res)
                 exit(-2)
             self.step2_save(user_id, res['resultContent'])
@@ -342,6 +348,9 @@ class Spider:
                 if res['result'] == 5066:
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    print(res)
+                    return
                 print(res)
                 exit(-3)
             self.step3_save(user_id, listing_id, res['resultContent'])
@@ -459,6 +468,9 @@ class Spider:
                 if res['result'] == 5066:
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    print(res)
+                    return
                 print(res)
                 exit(-4)
             self.step4_save(listing_id, res['resultContent'])
@@ -510,6 +522,9 @@ class Spider:
                 if res['result'] == 5066:
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    print(res)
+                    return
                 print(res)
                 exit(-5)
             self.step5_save(res['resultContent'])
