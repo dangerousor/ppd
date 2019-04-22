@@ -89,7 +89,7 @@ class Spider:
             else:
                 if html['Message'] == '您的帐号登录频繁，请稍后再试':
                     print('您的帐号登录频繁，请稍后再试')
-                    time.sleep(180)
+                    time.sleep(600)
                     self.login()
                 else:
                     print(html)
@@ -555,15 +555,15 @@ class Spider:
             user_id = self.step1(ld)
             if not user_id:
                 continue
-            time.sleep(1)
+            time.sleep(3)
             self.step2(user_id, ld)
-            time.sleep(1)
+            time.sleep(3)
             self.step3(user_id, ld)
-            time.sleep(1)
+            time.sleep(3)
             self.step4(ld)
-            time.sleep(1)
+            time.sleep(3)
             self.step5(ld)
-            time.sleep(1)
+            time.sleep(3)
 
 
 if __name__ == '__main__':
