@@ -41,8 +41,8 @@ class Spider:
             header = self.header
         res = self.session.post(url, data=data, headers=header)
         if res.status_code != 200:
-            if res.status_code == 502:
-                print(502)
+            if res.status_code == 502 or res.status_code == 500:
+                print(res.status_code)
                 time.sleep(180)
                 return self.post_html(url, data, header)
             print(res.status_code)
