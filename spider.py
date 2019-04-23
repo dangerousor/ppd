@@ -83,7 +83,7 @@ class Spider:
         if html['Code'] == 1:
             return
         else:
-            if html['Message'] == '验证码输入有误':
+            if html['Message'] == '验证码输入有误' or html['Message'] == '验证码错误':
                 print('验证码输入有误')
                 self.login()
             else:
