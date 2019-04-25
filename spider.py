@@ -172,10 +172,12 @@ class Spider:
                     print(res)
                     return False
                 if res['result'] == 5066:
+                    print(res)
                     time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 1012:
+                    print(res)
                     time.sleep(300)
                     continue
                 print(res)
@@ -265,10 +267,12 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    print(res)
                     time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 1012:
+                    print(res)
                     time.sleep(300)
                     continue
                 print(res)
@@ -347,10 +351,12 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    print(res)
                     time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 1012:
+                    print(res)
                     time.sleep(300)
                     continue
                 print(res)
@@ -468,10 +474,12 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    print(res)
                     time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 1012:
+                    print(res)
                     time.sleep(300)
                     continue
                 print(res)
@@ -523,10 +531,12 @@ class Spider:
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
                 if res['result'] == 5066:
+                    print(res)
                     time.sleep(30)
                     self.login()
                     continue
                 if res['result'] == 1012:
+                    print(res)
                     time.sleep(300)
                     continue
                 print(res)
