@@ -65,6 +65,7 @@ class Spider:
         res = requests.post('http://apigateway.jianjiaoshuju.com/api/v_1/yzm.html', headers=header_captcha, data=data_captcha)
         if res.json()['errCode'] != 0:
             if res.json()['errCode'] == 102:
+                time.sleep(10)
                 return self.login()
             print(res.json())
             exit(1)
