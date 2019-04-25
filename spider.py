@@ -81,6 +81,7 @@ class Spider:
         }
         html = self.post_html(url, data).json()
         if html['Code'] == 1:
+            print(html)
             return
         else:
             if html['Message'] == '验证码输入有误' or html['Message'] == '验证码错误':
