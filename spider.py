@@ -177,6 +177,8 @@ class Spider:
                     time.sleep(30)
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    return False
                 if res['result'] == 1012:
                     print(res)
                     time.sleep(300)
@@ -272,6 +274,8 @@ class Spider:
                     time.sleep(30)
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    return False
                 if res['result'] == 1012:
                     print(res)
                     time.sleep(300)
@@ -356,6 +360,8 @@ class Spider:
                     time.sleep(30)
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    return False
                 if res['result'] == 1012:
                     print(res)
                     time.sleep(300)
@@ -479,6 +485,8 @@ class Spider:
                     time.sleep(30)
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    return False
                 if res['result'] == 1012:
                     print(res)
                     time.sleep(300)
@@ -536,6 +544,8 @@ class Spider:
                     time.sleep(30)
                     self.login()
                     continue
+                if res['result'] == 5067:
+                    return False
                 if res['result'] == 1012:
                     print(res)
                     time.sleep(300)
