@@ -8,4 +8,5 @@ import sys
 if __name__ == '__main__':
     spider = Spider()
     spider.run()
-    os.execv(__file__, sys.argv)
+    python = sys.executable
+    os.execl(python, python, *sys.argv)
