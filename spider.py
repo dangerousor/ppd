@@ -23,8 +23,10 @@ class Spider:
     }
     session = requests.Session()
     dbWorker = DBWorker()
+    flag = True
 
     def __init__(self):
+        self.flag = True
         self.login()
         pass
 
@@ -175,8 +177,8 @@ class Spider:
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
-                    self.login()
-                    continue
+                    self.flag = False
+                    return False
                 if res['result'] == 5067:
                     return False
                 if res['result'] == 1012:
@@ -272,8 +274,8 @@ class Spider:
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
-                    self.login()
-                    continue
+                    self.flag = False
+                    return False
                 if res['result'] == 5067:
                     return False
                 if res['result'] == 1012:
@@ -358,8 +360,8 @@ class Spider:
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
-                    self.login()
-                    continue
+                    self.flag = False
+                    return False
                 if res['result'] == 5067:
                     return False
                 if res['result'] == 1012:
@@ -483,8 +485,8 @@ class Spider:
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
-                    self.login()
-                    continue
+                    self.flag = False
+                    return False
                 if res['result'] == 5067:
                     return False
                 if res['result'] == 1012:
@@ -542,8 +544,8 @@ class Spider:
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
-                    self.login()
-                    continue
+                    self.flag = False
+                    return False
                 if res['result'] == 5067:
                     return False
                 if res['result'] == 1012:
@@ -585,7 +587,7 @@ class Spider:
         self.dbWorker.insert_all(debt_record)
 
     def run(self):
-        while True:
+        while self.flag:
             ld = r.spop('yet')
             if not ld:
                 print('sleep for 2h')
