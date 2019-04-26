@@ -56,6 +56,7 @@ class Spider:
         return self.session.post('https://tz.ppdai.com/api/raptor/h5api/userDetailInfoV3', headers=self.header2, data=json.dumps({'token': token}))
 
     def login(self):
+        self.session = requests.session()
         html = self.get_html('https://ac.ppdai.com/ValidateCode/Image')
         base64_data = base64.b64encode(html.content)
         captcha = 'data:image/jpeg;base64,' + base64_data.decode()
