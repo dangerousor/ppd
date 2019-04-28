@@ -43,7 +43,12 @@ class Spider:
     def post_html(self, url, data=None, header=None):
         if not header:
             header = self.header
-        res = self.session.post(url, data=data, headers=header)
+        try:
+            res = self.session.post(url, data=data, headers=header)
+        except Exception as e:
+            print(e)
+            time.sleep(30)
+            return self.post_html(url, data, header)
         if res.status_code != 200:
             if res.status_code == 502 or res.status_code == 500:
                 print(res.status_code)
