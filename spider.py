@@ -176,6 +176,10 @@ class Spider:
             }
             res = json.loads(self.post_html(url, header=self.header2, data=json.dumps(data)).content.decode())
             if res['result'] != 1:
+                if res['result'] == -1:
+                    print(res)
+                    time.sleep(300)
+                    continue
                 if res['result'] == 404:
                     print(res)
                     return False
@@ -276,6 +280,10 @@ class Spider:
             }
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
+                if res['result'] == -1:
+                    print(res)
+                    time.sleep(300)
+                    continue
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
@@ -362,6 +370,10 @@ class Spider:
             }
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
+                if res['result'] == -1:
+                    print(res)
+                    time.sleep(300)
+                    continue
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
@@ -487,6 +499,10 @@ class Spider:
             }
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
+                if res['result'] == -1:
+                    print(res)
+                    time.sleep(300)
+                    continue
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
@@ -546,6 +562,10 @@ class Spider:
             }
             res = json.loads(self.post_html(url=url, data=json.dumps(data), header=self.header2).content.decode())
             if res['result'] != 1:
+                if res['result'] == -1:
+                    print(res)
+                    time.sleep(300)
+                    continue
                 if res['result'] == 5066:
                     print(res)
                     time.sleep(30)
