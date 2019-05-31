@@ -180,7 +180,7 @@ class Spider:
                 if res['result'] == -1:
                     print(res)
                     time.sleep(300)
-                    continue
+                    return False
                 if res['result'] == 404:
                     print(res)
                     return False
@@ -283,7 +283,7 @@ class Spider:
                 if res['result'] == -1:
                     print(res)
                     time.sleep(300)
-                    continue
+                    return False
                 if res['result'] == 5066:
                     time.sleep(30)
                     self.flag = False
@@ -372,7 +372,7 @@ class Spider:
                 if res['result'] == -1:
                     print(res)
                     time.sleep(300)
-                    continue
+                    return False
                 if res['result'] == 5066:
                     time.sleep(30)
                     self.flag = False
@@ -500,7 +500,7 @@ class Spider:
                 if res['result'] == -1:
                     print(res)
                     time.sleep(300)
-                    continue
+                    return False
                 if res['result'] == 5066:
                     time.flag = False
                     return False
@@ -561,7 +561,7 @@ class Spider:
                 if res['result'] == -1:
                     print(res)
                     time.sleep(300)
-                    continue
+                    return False
                 if res['result'] == 5066:
                     time.sleep(30)
                     self.flag = False
